@@ -1,1 +1,5 @@
-catalog port http://localhost:5011"
+services
+	-catalog port http://localhost:5011"
+	-photoStockAPI =>5012
+	-basketAPI => 5013
+identityserver=>5001

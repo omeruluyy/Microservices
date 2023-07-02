@@ -14,7 +14,8 @@ namespace FreeCourse.IdentityServer
 
         public static IEnumerable<ApiResource> ApiResources => new ApiResource[]{
             new ApiResource("resource_catalog"){Scopes={"catalog_fullpermission"}},
-            new ApiResource("photo_stock_catalog"){Scopes={"photo_stock_fullpermission"}},
+            new ApiResource("resource_photo_stock"){Scopes={"photo_stock_fullpermission"}},
+            new ApiResource("resource_basket"){Scopes={"basket_fullpermission"}},
             new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
         };
 
@@ -33,6 +34,7 @@ namespace FreeCourse.IdentityServer
             {
               new ApiScope("catalog_fullpermission","Catalog API cin full erisim"),
               new ApiScope("photo_stock_fullpermission","Photo Stock API cin full erisim"),
+              new ApiScope("basket_fullpermission","Basket API cin full erisim"),
               new ApiScope (IdentityServerConstants.LocalApi.ScopeName)
             };
 
@@ -45,7 +47,7 @@ namespace FreeCourse.IdentityServer
                     ClientId="WebMvcClient",
                     ClientSecrets={new Secret("secret".Sha256()) },
                     AllowedGrantTypes=GrantTypes.ClientCredentials,
-                    AllowedScopes={"catalog_fullpermission","photo_stock_f  fullpermission",IdentityServerConstants.LocalApi.ScopeName}
+                    AllowedScopes={"catalog_fullpermission","photo_stock_fullpermission",IdentityServerConstants.LocalApi.ScopeName}
                 },
                 new Client
                 {
@@ -54,7 +56,7 @@ namespace FreeCourse.IdentityServer
                     ClientSecrets={new Secret("secret".Sha256()) },
                     AllowOfflineAccess=true,
                     AllowedGrantTypes=GrantTypes.ResourceOwnerPassword,
-                    AllowedScopes={
+                    AllowedScopes={"basket_fullpermission",
                     IdentityServerConstants.StandardScopes.Email,
                     IdentityServerConstants.StandardScopes.Profile,
                     IdentityServerConstants.StandardScopes.OpenId,
